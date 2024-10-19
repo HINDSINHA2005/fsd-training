@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FSD TASK 2</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .form {
+
+            width: 700px;
+            background-color: bisque;
+            font-size: larger;
+            color: rgb(48, 95, 5);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .btn1 {
+            color: rgb(255, 0, 157);
+            background-color: black;
+            border-radius: 9px;
+
+        }
+
+        #btn2 {
+            color: rgb(255, 0, 157);
+            background-color: black;
+            border-radius: 9px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form">
+            <form>
+                <h1><u>Enter Your Details Here</u></h1>
+
+                <label for="fname">First Name:</label>
+                <input type="text" value="ABES" id="name" name="name" maxlength="10"><br>
+                <label for="age">Age:</label>
+                <input type="number" placeholder="Type Number only" id="age">
+                <br>
+                <label for="dateofbirth">Date Of Birth:</label>
+                <input type="date" id="date">
+                <br>
+                <label for="email">Email:</label>
+                <input type="email" placeholder="@abes.ac.in" id="email">
+                <label for="email">Password:</label>
+                <input type="password" id="pass">
+                <br>
+                <label for="size">Enter your Tshirt Size:</label>
+                <br>
+                <input type="radio">Small Size <br>
+                <input type="radio">Large <br>
+
+                <label for="color">Your Favrorite color:</label>
+                <input type="color">
+                <br>
+                <br>
+                <label for="tell">Tell us about youself</label>
+                <textarea id="test">tell about youself</textarea>
+                <br>
+                <br>
+                <button class="btn1" type="reset">Reset</button>
+                <button id="btn2" type="submit">submit</button>
+                <p id="errorm" style="color: blueviolet;"></p>
+
+            </form>
+        </div>
+    </div>
+    <script>
+
+        document.getElementById("btn2").addEventListener("click", function () {
+            let name = document.getElementById("name").value;
+            let age = document.getElementById("age").value;
+            let dob = document.getElementById("date").value;
+            let email = document.getElementById("email").value;
+            let pass = document.getElementById("pass").value;
+            let test = document.getElementById("test").value;
+          
+            let error = document.getElementById("errorm");
+            error.innerHTML = "";
+
+            if (name === "") {
+                error.innerHTML = "Name cannot be empty";
+                event.preventDefault()
+                return;
+            
+            }
+            if (age === "") {
+                error.innerHTML  = "age cannot be empty";
+                event.preventDefault()
+                return;
+            }
+            if (dob=== "") {
+                error.innerHTML  = "dob cannot be empty";
+                event.preventDefault()
+                return;
+            }
+            if (email=== "") {
+                error.innerHTML  = "email cannot be empty";
+                event.preventDefault()
+                return;
+            }
+            if (pass=== "") {
+                error.innerHTML  = "pass cannot be empty";
+                event.preventDefault()
+                return;
+            }
+           
+
+
+
+
+
+
+
+
+            alert("form submitted");
+        });
+
+    </script>
+</body>
+
+</html>

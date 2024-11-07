@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .body {
+        border: 3px solid whitesmoke;
+        border-radius: 15px;
+        background-color: whitesmoke;
+        height: 650px;
+    }
+
+    .box {
+        margin-top: 50px;
+        border: 5px solid white;
+        background-color: white;
+        height: 360px;
+        width: 570px;
+        border-radius: 15px;
+        margin-left: 380px;
+    }
+
+    .getjoke {
+        background-color: green;
+        border-radius: 4px;
+        color: white;
+        width: 80px;
+        height: 35px;
+        margin-top: 45px;
+        margin-left: 70px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    .clear {
+        background-color: red;
+        border-radius: 5px;
+        color: white;
+        width: 80px;
+        height: 35px;
+        margin-left: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .main {
+        padding: 30px;
+        background-color: whitesmoke;
+        border-radius: 15px;
+        height: auto;
+    }
+
+    #text {
+        color: grey;
+    }
+</style>
+
+<body>
+    <div class="body">
+        <div class="box">
+            <center>
+                <h2>RANDOM JOKE GENERATOR</h2>
+            </center>
+            <div class="main">
+                <center>
+                    <h3 id="joke-text">Press the button for a joke</h3>
+                </center>
+                <center>
+                    <h4 id="text">Character count: 0</h4>
+                </center>
+            </div>
+
+            <button class="getjoke" onclick="fetchData()">Get Joke</button>
+            <button class="clear" onclick="clearText()">Clear</button>
+        </div>
+    </div>
+
+    <script>
+        async function fetchData() {
+            const url = 'https://v2.jokeapi.dev/joke/Any';
+
+            try {
+                const s = await fetch(url);
+
+
+
+                const data = await s.json();
+
+
+                const jokeText = data.type === "single" ? data.joke : `${data.setup} - ${data.delivery}`;
+
+
+                document.getElementById('joke-text').textContent = jokeText;
+                document.getElementById('text').textContent = `Character count: ${jokeText.length}`;
+
+            } catch (error) {
+                console.error('Failed to fetch data:', error);
+                document.getElementById('joke-text').textContent = 'Error loading data.';
+            }
+        }
+
+
+        function clearText() {
+            document.getElementById('joke-text').textContent = 'Press the button for a joke';
+            document.getElementById('text').textContent = 'Character count: 0';
+        }
+    </script>
+
+</body>
+
+</html>
